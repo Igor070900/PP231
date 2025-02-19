@@ -20,13 +20,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getUserById(int id) {
         return entityManager.find(User.class, id);
     }
